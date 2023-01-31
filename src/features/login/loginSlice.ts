@@ -7,11 +7,13 @@ export interface LoginState {
   status: 'idle' | 'loading' | 'success' | 'failed';
 }
 
+const initialUser: User = {
+  email: '',
+  pass: ''
+}
+
 const initialState: LoginState = {
-  user: {
-    email: '',
-    pass: ''
-  },
+  user: initialUser,
   status: 'idle',
 };
 
@@ -29,7 +31,8 @@ export const counterSlice = createSlice({
       LSWrapper.setItem('user', state.user);
     },
     setFromCach(state){
-      state.user = LSWrapper.getItem('user');
+      const user = LSWrapper.getItem('user');
+      state.user = user != null ? user : initialUser;
     },
     reset(state){
       localStorage.clear();

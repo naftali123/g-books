@@ -64,14 +64,14 @@ export default function LoginPage() {
     }
 
     useEffect(()=>{
-        if(user.email === '' || user.pass === ''){
+        if(user!=null && (user.email === '' || user.pass === '')){
             if(!cachChecked.current){
                 dispatch(setFromCach());
                 cachChecked.current = true;
             }
         }
         else navigate(from, { replace: true });
-    }, [user.email, user.pass, dispatch, from, navigate]);
+    }, [user, dispatch, from, navigate]);
 
     return (
         <Container maxWidth="xs">

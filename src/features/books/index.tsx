@@ -22,7 +22,6 @@ export function BooksPageList() {
     }
 
     const handleKeyDown = (event: any) => event.key === 'Enter' && handleFech();
-    console.log({status});
     
     return (
         <Grid container sx={{ mt: 3 }}>
